@@ -1,0 +1,25 @@
+<div class="container">
+    <h3>Koszyk</h3>
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Ilość</th>
+            <th>Cena</th>
+        </tr>
+       
+    </table>
+    <table >
+        <tr *ngFor="let obj of koszyk">
+            <td>{{obj.name}}</td>
+        <td>{{obj.quantity}}</td>
+        <td>{{obj.price| currencyPipe : currencyType}}{{currencyType?"&#x24;":"&euro;"}}</td>
+        </tr>
+        <tr >
+            <td ><button *ngIf="koszyk.length>0" (click)="onOrder()">Zamów</button></td>
+            <td ></td>
+            <td>suma: {{sum | currencyPipe : currencyType}}{{currencyType?"&#x24;":"&euro;"}}</td>
+        </tr>
+        
+    </table>
+    
+</div>

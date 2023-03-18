@@ -1,0 +1,40 @@
+.container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 96%;
+  position: relative;
+  left: 2%;
+  min-height: 100px;
+  background-color: #f0e68c;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+table {
+  width: 80%;
+  height: 100%;
+  border-collapse: collapse;
+}
+td {
+  text-align: center;
+  width: 33%;
+}
+td:last-of-type {
+  font-size: 1.5em;
+  padding: 10px 0 10px 0;
+}
+tr {
+  border-bottom: 1px solid salmon;
+  margin-top: 10px;
+}
+
+tr:last-of-type {
+  border: none;
+}
+th {
+  text-align: center;
+  width: 33%;
+}

@@ -1,0 +1,84 @@
+
+<div class="container">
+
+    <div class="dish" *ngIf="dish">
+        <a routerLink="/Menu" >Wróć do Menu</a>
+        <div>
+            <div class="imgCont" *ngIf="dish">
+                
+                <img *ngFor="let img of dish.imgs; let i = index" src={{img}} alt={{dish.name}} [ngStyle]="{'left':sliderPoition[i]}">
+                <p class="arrows" (click)="onLeftArrow($event)" *ngIf="dish.imgs.length>1">&#706;</p>
+                <p class="arrows" (click)="onRightArrow($event)" *ngIf="dish.imgs.length>1">&#707;</p>
+            </div>
+        </div>
+       
+        <div class="infoCont">
+            <div class="header">
+                <h1>{{dish.name | uppercase}}</h1>
+                <h1>{{dish.price | currencyPipe:  currencyType}}{{currencyType?"&#x24;":"&euro;"}}</h1>
+            </div>
+
+            <div class="center">
+                <div class="opis">
+                    <h2>kuchnia {{dish.cuisine | uppercase}}, {{dish.type}}</h2>
+                    <h2>{{dish.category}}</h2>
+                </div>
+                
+                    <select name="ingredients"  >
+                        <option selected value="none" disabled>Składniki:</option>
+                        <option *ngFor="let ing of dish.ingredients" value="none" disabled>{{ing}}</option>
+                    </select>
+                    <h2>Opis</h2>
+                    <h3>{{dish.description}}</h3>
+            </div>
+
+            <div class="footer">
+                <div>
+                    <div>
+                        <p [ngStyle]="{'backgroundColor':((dish.maxQuantity-counter)==0)?'lightcoral':'white','color':((dish.maxQuantity-counter)==0)?'white':'rgb(70, 70, 70, 0.85)'}">{{((dish.maxQuantity-counter)>0)?"Dostępne: "+(dish.maxQuantity-counter).toString():"NIE DOSTĘPNE"}}</p>
+                    </div>
+
+                    <div class="buttonsCont" *ngIf="!canModify">
+                        <button (click)="onPlusClick()" [disabled]="counter>=dish.maxQuantity?true:false" [ngStyle]="{'opacity':counter>=dish.maxQuantity?0:1}">+</button>
+                        <p >{{counter}}</p>
+                        <button (click)="onMinusClick()"  [disabled]="counter<=0?true:false" [ngStyle]="{'opacity':counter<=0?0:1}">&minus;</button>
+                    </div>
+                </div>
+            
+<div>
+    <app-stars 
+    [dish]=dish
+    [activate]=canRate
+    ></app-stars>
+</div>
+               
+                <form [formGroup]="recForm" (ngSubmit)="onSubmit(recForm)" *ngIf="canComment">
+                    <label >Dodaj recenzję</label>
+                    <br>
+                    <br>
+                   
+                    <label for="nazwa">Nazwa</label>
+                    <br>
+                    <input type="text" name="nazwa" formControlName="nazwa">
+                <br>
+                    <label for="body">Recenzja</label>
+                    <br>
+                    <input type="text" name="body" formControlName="body">
+                <br>
+                    <label for="date">Data</label>
+                    <br>
+                    <input type="date" name="date" formControlName="date">
+                    <br>
+                    <p class="error" [innerHtml]="displayErrors"></p>
+                    <input type="submit" name="submit" value="Dodaj recenzję"  [ngStyle]="{'backgroundColor':!recForm.valid?'lightcoral':'chartreuse'}">
+                </form>
+            </div>
+            <div class="recContainer">
+                <div class="recC" *ngFor="let rec of dish.rec">
+                    <h2>{{rec.nazwa}} | {{rec.nick}}  {{rec.date.length>0?"|"+rec.date:""}}</h2>
+                    <p>{{rec.body}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

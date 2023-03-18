@@ -1,0 +1,18 @@
+
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+        <label >Logowanie</label>
+        <br>
+        <br>
+        <label for="email">E-mail</label>
+        <br>
+        <input type="email" name="email" formControlName="email" >
+    <br>
+        <label for="pass">Hasło</label>
+        <br>
+        <input type="password" name="pass" formControlName="pass">
+        <br>
+        <p class="error" [innerHtml]="displayErrors"></p>
+        <input type="submit" name="submit" value="Zaloguj się"  [ngStyle]="{'backgroundColor':!loginForm.valid?'lightcoral':'chartreuse'}">
+    </form>
+</div>

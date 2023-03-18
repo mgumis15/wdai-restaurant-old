@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  border: 2px solid silver;
+  box-sizing: border-box;
+  padding: 1vw 0 1vw 1vw;
+  min-width: 250px;
+  background-color: bisque;
+}
+label {
+  margin-top: 5px;
+  font-size: 1.2em;
+  align-self: left;
+}
+label:first-of-type {
+  font-size: 1.6em;
+  align-self: center;
+}
+
+input {
+  height: 20px;
+  width: 95%;
+}
+input:last-of-type {
+  margin-top: 15px;
+  width: 40%;
+  height: 30px;
+  background-color: chartreuse;
+  align-self: center;
+}
+p {
+  text-align: center;
+  color: red;
+  font-size: 1.3em;
+}
+@media (min-width: 1200px) {
+  form {
+    width: 1200px;
+  }
+}

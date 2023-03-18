@@ -1,0 +1,47 @@
+<div>
+
+<div>
+    <h2>Ustaw wartość persistence: </h2>
+    <select name="persistence" (change)="onSelectPersistence($event)" >
+        <option value="LOCAL" [selected]="'LOCAL'==persistance">LOCAL</option>
+        <option value="SESSION"[selected]="'SESSION'==persistance">SESSION</option>
+        <option value="NONE"[selected]="'NONE'==persistance">NONE</option>
+    </select>
+</div>
+
+<div>
+    <div class="manageUsers">
+
+    
+    <h2>Zarządaj użytkownikami: </h2>
+    <table>
+        <tr>
+            <th>Nazwa</th>
+            <th>Email</th>
+            <th>Rola</th>
+            <th>Zbanowany</th>
+        </tr>
+        <tr *ngFor="let user of users">
+        <td>{{user.nick}}</td>
+        <td>{{user.email}}</td>
+        <td class="roleTd">
+            <div>
+                <p >admin</p>
+                <input type="checkbox"  name="admin" value={{user.uid}} (change)="onAdmin($event)" [checked]="((user.role=='admin')?true:false)" [disabled]="myUid==user.uid?true:false">
+            </div>
+            <div>
+                <p >manager</p>
+                <input type="checkbox"  name="manager" value={{user.uid}} (change)="onManager($event)" [checked]="((user.role=='admin'||user.role=='manager')?true:false)" [disabled]="myUid==user.uid?true:false">
+            </div>
+          <div>
+            <p >client</p>
+            <input type="checkbox"  name="client" value={{user.uid}} (change)="onClient($event)" [checked]="((user.role=='client')?true:false)" [disabled]="true">
+          </div>
+           
+        </td>
+        <td><input type="checkbox"  name={{user.uid}} value={{user.uid}} (change)="onBan($event)" [checked]=user.banned [disabled]="myUid==user.uid?true:false"></td>
+        </tr>
+    </table>
+</div>
+</div>
+</div>

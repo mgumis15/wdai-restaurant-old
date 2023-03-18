@@ -1,0 +1,9 @@
+<div class="starsContainer">
+    <div *ngFor="let star of [1,2,3,4,5]" class="starBorder" (click)="onClick($event,star)"
+        (mouseenter)="onEnter($event,star)" (mouseleave)="onLeave($event)">
+        <div class="star"
+            [ngStyle]="{'backgroundColor':(activate &&((star<=choosenRate)||(star<=hooverRate)))?'gold':((star<=rate)?'green':'white')}">
+        </div>
+    </div>
+    <p>{{rate}}/{{dish.opinions.length}}</p>
+</div>

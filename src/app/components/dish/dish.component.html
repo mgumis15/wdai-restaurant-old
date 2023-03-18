@@ -1,0 +1,47 @@
+<div 
+>
+<div class="dish" 
+[ngStyle]="{
+    'boxShadow':((dish.maxQuantity-counter)<4)?'8px 8px 23px -14px rgb(248, 21, 21)':'8px 8px 23px -14px rgba(66, 68, 90, 1)',
+    'borderColor':(dish.price==maxValue)?'green':((dish.price==minValue)?'red':'')
+}">
+
+
+<button class="delete" (click)="onDelete($event)" *ngIf="canModify">&#10006;</button>
+<button class="edit" (click)="onEdit($event)" *ngIf="canModify"> 	
+    EDYTUJ</button>
+    <div class="imgCont">
+        <img src={{dish.imgs[0]}} alt={{dish.name}} (click)="onChooseDish($event)">
+    </div>
+    <div class="infoCont">
+        <div class="header">
+
+            <h1>{{dish.name | uppercase}}</h1>
+            <h1 class>{{dish.price | currencyPipe:  currencyType}}{{currencyType?"&#x24;":"&euro;"}}</h1>
+        </div>
+            <div class="center">
+                <h2>kuchnia {{dish.cuisine | uppercase}}, {{dish.type}}</h2>
+                <h2>{{dish.category}}</h2>
+                    <select name="ingredients"  >
+                        <option selected value="none" disabled>Składniki:</option>
+                        <option *ngFor="let ing of dish.ingredients" value="none" disabled>{{ing}}</option>
+                    </select>
+            </div>
+            <div class="footer">
+                <div *ngIf="isLogged&&!specialAccess">
+                    <p class="quant" [ngStyle]="{'backgroundColor':((dish.maxQuantity-counter)==0)?'lightcoral':'white','color':((dish.maxQuantity-counter)==0)?'white':'rgb(70, 70, 70, 0.85)'}">{{((dish.maxQuantity-counter)>0)?"Dostępne: "+(dish.maxQuantity-counter).toString():"NIE DOSTĘPNE"}}</p>
+                </div>
+                <div class="buttonsCont" *ngIf="isLogged&&!specialAccess">
+                    <button (click)="onPlusClick()" [disabled]="counter>=dish.maxQuantity?true:false" [ngStyle]="{'opacity':counter>=dish.maxQuantity?0:1}">+</button>
+                    <p >{{counter}}</p>
+                    <button (click)="onMinusClick()"  [disabled]="counter<=0?true:false" [ngStyle]="{'opacity':counter<=0?0:1}">&minus;</button>
+                </div>
+                <app-stars 
+                [dish]=dish
+                [activate]=false
+                ></app-stars>
+            </div>
+    </div>
+</div>
+    <app-edit-form [dish]=dish *ngIf="editMode"></app-edit-form>
+</div>

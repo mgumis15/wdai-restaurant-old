@@ -1,0 +1,35 @@
+
+<div class="container">
+    <form [formGroup]="dishForm" (ngSubmit)="onSubmit(dishForm)">
+        <label >Dodaj danie</label>
+        <label for="name">Nazwa dania</label>
+    
+        <input type="text" name="name" formControlName="name" >
+    
+        <label for="cuisine">Kuchnia</label>
+        <input type="text" name="cuisine" formControlName="cuisine">
+    
+        <label for="type">Typ</label>
+        <input type="text" name="type" formControlName="type">
+    
+        <label for="category">Kategoria</label>
+        <input type="text" name="category" formControlName="category">
+    
+        <label for="ingredients">Składniki (oddzielone spacją)</label>
+        <input type="text" name="ingredients" formControlName="ingredients">
+    
+        <label for="price">Cena</label>
+        <input type="text" name="price" formControlName="price">
+    
+        <label for="maxQuantity">Ilość</label>
+        <input type="text" name="maxQuantity" formControlName="maxQuantity">
+    
+        <label for="description">Opis</label>
+        <input type="text" name="description" formControlName="description">
+    
+        <label for="imgs">Zdjęcie</label>
+        <input type="text" name="imgs" formControlName="imgs">
+        <p class="error" [innerHtml]="displayErrors"></p>
+        <input type="submit" name="submit" value="Dodaj danie" [disabled]=!dishForm.valid [ngStyle]="{'backgroundColor':!dishForm.valid?'lightcoral':'chartreuse'}">
+    </form>
+</div>

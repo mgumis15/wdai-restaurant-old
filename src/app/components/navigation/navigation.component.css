@@ -1,0 +1,202 @@
+nav {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  background-color: gainsboro;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+}
+.BurgerNick {
+  display: relative;
+}
+.BurgerNick p {
+  position: relative;
+  width: 8vw;
+  height: 100%;
+  font-size: 1.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.userLinks {
+  background-color: darkcyan;
+  height: 50px;
+  border-radius: 15px;
+  border: 1px solid silver;
+  text-decoration: none;
+  text-align: center;
+  line-height: 45px;
+  color: whitesmoke;
+  font-size: 1.5em;
+  padding: 0 10px 0 10px;
+}
+.currencySwitch {
+  height: 34px;
+  font-size: 1.5em;
+  text-align: right;
+  width: 15%;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+}
+a {
+  height: 50px;
+  background-color: aqua;
+  border-radius: 15px;
+  border: 1px solid silver;
+  text-decoration: none;
+  text-align: center;
+  line-height: 45px;
+  color: whitesmoke;
+  font-size: 1.5em;
+  padding: 0 10px 0 10px;
+}
+.active {
+  background-color: crimson;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0 10px 0 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: greenyellow;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.burger {
+  display: none;
+  margin: 5px 10px;
+  width: 10vw;
+  position: relative;
+  transform: translate(0%, 2%);
+}
+.line1,
+.line2,
+.line3 {
+  z-index: 1;
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+.click {
+  display: block;
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 17px;
+  top: 10px;
+  margin: 6px 0;
+  z-index: 999;
+}
+.right {
+  transition: 1s;
+}
+.click:checked ~ nav .burger .line1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+.click:checked ~ nav .burger .line2 {
+  opacity: 0;
+}
+.click:checked ~ nav .burger .line3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+@media (max-width: 850px) {
+  nav {
+    z-index: 980;
+    overflow: hidden;
+    transition: 1s ease;
+    min-width: 400px;
+  }
+
+  .links {
+    width: 100%;
+    flex-direction: column;
+    justify-content: start;
+    position: absolute;
+    top: 80px;
+    padding: 0;
+  }
+  .userLinks {
+    width: 100%;
+
+    margin: 0;
+    border-radius: 0;
+  }
+  .currencySwitch {
+    position: absolute;
+    top: 25px;
+    width: 150px;
+  }
+  a {
+    width: 100%;
+    border-radius: 0;
+  }
+  .burger {
+    display: block;
+    position: absolute;
+    width: 10vw;
+  }
+  .click:checked ~ nav {
+    height: 320px;
+  }
+  .BurgerNick p {
+    position: relative;
+    left: 100px;
+    width: 100%;
+  }
+}

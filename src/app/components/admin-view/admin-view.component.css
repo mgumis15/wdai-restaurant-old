@@ -1,0 +1,27 @@
+.roleTd {
+  display: flex;
+  flex-direction: column;
+}
+td {
+  border: 1px solid silver;
+  text-align: center;
+}
+th {
+  border: 1px solid silver;
+  text-align: center;
+}
+.roleTd div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.roleTd div {
+  width: 100%;
+}
+.manageUsers {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}

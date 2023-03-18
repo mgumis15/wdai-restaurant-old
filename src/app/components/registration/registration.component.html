@@ -1,0 +1,26 @@
+
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+        <label >Rejestracja</label>
+        <br>
+        <br>
+        <label for="nick">Nick</label>
+        <br>
+        <input type="text" name="nick" formControlName="nick" >
+        <br>
+        <label for="email">E-mail</label>
+        <br>
+        <input type="email" name="email" formControlName="email" >
+    <br>
+        <label for="pass">Hasło</label>
+        <br>
+        <input type="password" name="pass" formControlName="pass">
+        <br>
+        <label for="passConfirm">Potwierdź hasło</label>
+        <br>
+        <input type="password" name="passConfirm" formControlName="passConfirm">
+        <br>
+        <p class="error" [innerHtml]="displayErrors"></p>
+        <input type="submit" name="submit" value="Zarejestruj się"  [ngStyle]="{'backgroundColor':!loginForm.valid?'lightcoral':'chartreuse'}">
+    </form>
+</div>

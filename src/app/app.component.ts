@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'sprawdzanie';
+
+  currency:number[]=[3.5,4.5]
+
+
+  constructor(){}
+  ngOnInit(){
+    
+    
+  }
+ 
+ 
+  
 }

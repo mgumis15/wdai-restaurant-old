@@ -1,0 +1,41 @@
+<input type="checkbox" class="click" />
+<nav>
+    
+    <div class="BurgerNick"> 
+        
+        <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        </div>
+    <p>{{nick}}</p>
+ </div>
+   
+    <div class="links">
+        
+        <a routerLink="/Home" routerLinkActive="active">Home</a>
+        <a routerLink="/Menu" routerLinkActive="active">Menu</a>
+        <a routerLink="/ShoppingCart" routerLinkActive="active"
+        *ngIf="isLogged && authService.haveAccess('ShoppingCart')"
+        >Koszyk</a>
+        <a routerLink="/AdminView" routerLinkActive="active"
+        *ngIf="isLogged && authService.haveAccess('AdminView')"
+        >AdminView</a>
+        <a routerLink="/DishesManagment" routerLinkActive="active"
+        *ngIf="isLogged && authService.haveAccess('DishesManagment')"
+        >Managment</a>
+        <a routerLink="/Login" routerLinkActive="active" class="userLinks" *ngIf="!isLogged">Logowanie</a>
+        <a routerLink="/Register" routerLinkActive="active" class="userLinks"*ngIf="!isLogged">Rejestracja</a>
+        <div class="userLinks" (click)="signOut($event)"*ngIf="isLogged">Wyloguj</div>
+    </div>
+       
+        <div class="currencySwitch">
+            <label>&#x24;</label>
+            <label class="switch">
+                <input type="checkbox" (click)="switchCurrency()">
+                <span class="slider round"></span>
+              </label>
+              <label>&euro;</label>
+        </div>
+   
+</nav>
